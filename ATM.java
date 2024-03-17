@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package atm3;
+package atm;
 
 /**
  *
@@ -35,10 +35,10 @@ class BankAccount {
     }
 }
 
-public class ATM3 {
+public class ATM {
     private BankAccount account;
 
-    public ATM3(BankAccount account) {
+    public ATM(BankAccount account) {
         this.account = account;
     }
 
@@ -51,12 +51,12 @@ public class ATM3 {
     }
 
     public void processOption(int option) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         switch (option) {
             case 1:
                 System.out.print("Enter amount to withdraw: ");
-                double withdrawAmount = scanner.nextDouble();
+                double withdrawAmount = sc.nextDouble();
                 if (account.withdraw(withdrawAmount)) {
                     System.out.println("Withdrawal successful.");
                 } else {
@@ -65,7 +65,7 @@ public class ATM3 {
                 break;
             case 2:
                 System.out.print("Enter amount to deposit: ");
-                double depositAmount = scanner.nextDouble();
+                double depositAmount = sc.nextDouble();
                 account.deposit(depositAmount);
                 System.out.println("Deposit successful.");
                 break;
@@ -83,13 +83,13 @@ public class ATM3 {
 
     public static void main(String[] args) {
         BankAccount userAccount = new BankAccount(1000); // Initial balance of 1000
-        ATM3 atm = new ATM3(userAccount);
-        Scanner scanner = new Scanner(System.in);
+        ATM atm = new ATM(userAccount);
+        Scanner sc = new Scanner(System.in);
 
         while (true) {
             atm.displayMenu();
             System.out.print("Select an option: ");
-            int option = scanner.nextInt();
+            int option = sc.nextInt();
             atm.processOption(option);
         }
     }
